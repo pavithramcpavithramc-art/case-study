@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpendWise — Case Study — Pavithra C</title>
+  <meta name="description" content="SpendWise case study — a student-focused financial dashboard with transaction tracking, budgets, insights, and savings goals." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <main class="container mx-auto px-4 sm:px-6 py-8 lg:py-12">
+    <a href="../index.html" class="inline-flex items-center text-sm font-semibold text-indigo-600">← Back to portfolio</a>
+
+    <header class="mt-6 overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-500 p-8 text-white shadow-xl">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <p class="text-sm uppercase tracking-[0.35em] text-indigo-100">Student financial management platform</p>
+          <h1 class="mt-3 text-3xl font-semibold sm:text-4xl">SpendWise makes everyday money decisions feel lighter for students.</h1>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-indigo-50/95 sm:text-base">The experience centers on fast transaction capture, clear budget visibility, and motivating savings progress without needing complex spreadsheets.</p>
+        </div>
+        <div class="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm">
+          <p class="text-sm text-indigo-100">Current month</p>
+          <p id="spendwise-current-month" class="mt-1 text-xl font-semibold">Loading…</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="mt-8 grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
+      <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-600">Quick add</p>
+            <h2 class="mt-1 text-2xl font-semibold">Capture a transaction in seconds</h2>
+            <p class="mt-2 text-sm text-slate-600">Add income or expenses, choose a category, and keep the dashboard up to date instantly.</p>
+          </div>
+          <div class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-600">LocalStorage demo</div>
+        </div>
+
+        <form id="spendwise-form" class="mt-6 grid gap-4 lg:grid-cols-2">
+          <input name="title" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none ring-0 focus:border-indigo-400" placeholder="What did you spend on?" required />
+          <input name="amount" type="number" min="0.01" step="0.01" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none ring-0 focus:border-indigo-400" placeholder="Amount (₹)" required />
+          <select name="type" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-indigo-400">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+          <select name="category" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-indigo-400">
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Groceries</option>
+            <option>Study</option>
+            <option>Entertainment</option>
+            <option>Other</option>
+          </select>
+          <input name="date" type="date" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-indigo-400 lg:col-span-2" required />
+          <input type="hidden" name="editing-id" id="spendwise-editing-id" />
+          <p id="spendwise-form-error" class="hidden text-sm font-medium text-rose-600 lg:col-span-2"></p>
+          <button class="rounded-2xl bg-indigo-600 px-4 py-3 font-semibold text-white transition hover:bg-indigo-700 lg:col-span-2" type="submit">Add transaction</button>
+        </form>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-1">
+        <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-600">Snapshot</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-2xl bg-slate-50 p-4">
+              <p class="text-sm text-slate-500">Balance</p>
+              <p id="spendwise-balance" class="mt-2 text-2xl font-semibold">₹0.00</p>
+            </div>
+            <div class="rounded-2xl bg-slate-50 p-4">
+              <p class="text-sm text-slate-500">Income</p>
+              <p id="spendwise-income" class="mt-2 text-2xl font-semibold text-emerald-600">₹0.00</p>
+            </div>
+            <div class="rounded-2xl bg-slate-50 p-4">
+              <p class="text-sm text-slate-500">Expenses</p>
+              <p id="spendwise-expenses" class="mt-2 text-2xl font-semibold text-rose-600">₹0.00</p>
+            </div>
+            <div class="rounded-2xl bg-slate-50 p-4">
+              <p class="text-sm text-slate-500">Savings goal</p>
+              <p id="spendwise-savings" class="mt-2 text-2xl font-semibold text-amber-600">₹0.00</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-600">Savings goal</p>
+              <h3 class="mt-1 text-xl font-semibold">Set a target and stay motivated</h3>
+            </div>
+            <div class="rounded-full bg-amber-50 px-3 py-1 text-sm font-medium text-amber-700">Goal</div>
+          </div>
+          <form id="goal-form" class="mt-4 flex flex-col gap-3 sm:flex-row">
+            <input id="goal-input" type="number" min="1000" step="1000" class="flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-indigo-400" placeholder="Target amount (₹)" />
+            <button class="rounded-2xl bg-slate-900 px-4 py-3 font-semibold text-white" type="submit">Update</button>
+          </form>
+          <div class="mt-4 h-2 rounded-full bg-slate-100">
+            <div id="goal-progress" class="h-2 rounded-full bg-emerald-500" style="width: 0%"></div>
+          </div>
+          <p id="goal-status" class="mt-3 text-sm text-slate-600">You are 0% of the way toward your target.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+      <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-600">Budget overview</p>
+            <h2 class="mt-1 text-xl font-semibold">Keep each category in check</h2>
+          </div>
+          <div class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-600">Monthly</div>
+        </div>
+        <div id="budget-list" class="mt-6 space-y-4"></div>
+      </article>
+
+      <article class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-600">Transactions</p>
+            <h2 class="mt-1 text-xl font-semibold">Review and manage your activity</h2>
+            <p class="mt-2 text-sm text-slate-600">Filter by type or category to focus on where the money goes.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <select id="filter-type" class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-indigo-400">
+              <option value="all">All</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+            <select id="filter-category" class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-indigo-400">
+              <option value="all">All categories</option>
+              <option>Food</option>
+              <option>Transport</option>
+              <option>Groceries</option>
+              <option>Study</option>
+              <option>Entertainment</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div id="insight-card" class="mt-6 rounded-2xl border border-indigo-100 bg-indigo-50 p-4 text-sm text-slate-700"></div>
+        <div id="spendwise-empty" class="mt-6 rounded-2xl border border-dashed border-slate-200 px-4 py-8 text-center text-sm text-slate-500">No transactions yet. Add your first income or expense to start the dashboard.</div>
+        <ul id="spendwise-list" class="mt-4 space-y-3"></ul>
+      </article>
+    </section>
+
+    <section class="mt-8 rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-semibold">Why the experience works for students</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <div>
+          <h3 class="font-semibold">Fast entry</h3>
+          <p class="mt-2 text-sm text-slate-600">Students can add money movement in under a minute without navigating several screens.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Clear budget signals</h3>
+          <p class="mt-2 text-sm text-slate-600">Budgets highlight which categories are nearing their limits to encourage quick decisions.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Motivating savings</h3>
+          <p class="mt-2 text-sm text-slate-600">A visible goal and progress indicator turn saving into an achievable habit.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>
