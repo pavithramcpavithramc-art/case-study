@@ -6,16 +6,13 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v1
+      - name: Upload static files
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
         with:
           path: |
             index.html
@@ -23,5 +20,12 @@ jobs:
             js
             work
             assets
-      - id: deployment
-        uses: actions/deploy-pages@v1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
