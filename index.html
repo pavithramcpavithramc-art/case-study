@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pavithra C — UX/UI Designer & Front-End Developer</title>
+  <meta name="description" content="Portfolio of Pavithra C, a UX/UI designer with front-end development skills in HTML, CSS, Tailwind CSS, and JavaScript." />
+  <meta property="og:title" content="Pavithra C — UX/UI Designer & Front-End Developer" />
+  <meta property="og:description" content="I design user-centered digital experiences and bring them to life through front-end development." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/images/portrait.svg" />
+
+  <!-- Tailwind via CDN with a small custom theme -->
+  <script>
+    tailwind = {theme: {extend: {colors: {accent: '#6B46C1', warm: '#F7F5F2'}}}};
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-warm text-neutral-900 antialiased">
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+    <nav class="container mx-auto px-6 py-4 flex items-center justify-between" aria-label="Primary Navigation">
+      <a href="#hero" class="font-medium text-lg">Pavithra C</a>
+      <button id="nav-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+        <svg width="24" height="24" fill="none" aria-hidden="true"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul id="desktop-nav" class="hidden md:flex gap-8 items-center text-sm">
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden px-6 pb-4 hidden" aria-hidden="true">
+      <ul class="flex flex-col gap-3">
+        <li><a href="#work" class="block py-2">Work</a></li>
+        <li><a href="#about" class="block py-2">About</a></li>
+        <li><a href="#skills" class="block py-2">Skills</a></li>
+        <li><a href="#contact" class="block py-2">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="hero" class="container mx-auto px-6 py-16 md:py-24 grid grid-cols-1 gap-10">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">I design digital experiences that solve real problems.</h1>
+        <p class="mt-5 text-gray-700 max-w-xl">Hi, I'm Pavithra — a UX/UI designer with front-end development skills. I turn user problems into clear, intuitive experiences and bring my designs to life with HTML, CSS, Tailwind CSS, and JavaScript.</p>
+        <p class="mt-3 text-sm text-gray-600">UX/UI Design • Figma • Front-End Development • JavaScript</p>
+        <div class="mt-6 flex gap-4">
+          <a href="#work" class="btn-primary inline-flex items-center">View My Work</a>
+          <a href="#contact" class="btn-ghost inline-flex items-center">Let's Connect</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick profile -->
+    <section class="container mx-auto px-6 py-6">
+      <h2 class="text-xl font-semibold">From problem to product.</h2>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 bg-white rounded-lg border"> 
+          <span class="text-sm text-gray-500">01</span>
+          <h3 class="mt-2 font-medium">Understand</h3>
+          <p class="mt-1 text-sm text-gray-600">User needs, research, pain points, journeys</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg border"> 
+          <span class="text-sm text-gray-500">02</span>
+          <h3 class="mt-2 font-medium">Design</h3>
+          <p class="mt-1 text-sm text-gray-600">Flows, wireframes, UI, prototypes, systems</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg border"> 
+          <span class="text-sm text-gray-500">03</span>
+          <h3 class="mt-2 font-medium">Build</h3>
+          <p class="mt-1 text-sm text-gray-600">Responsive interfaces with HTML, CSS, Tailwind CSS and JavaScript</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container mx-auto px-6 py-10">
+      <h2 class="text-2xl font-semibold">About Me</h2>
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 bg-white p-6 rounded-lg border">
+          <p>I'm a BCA graduate and an aspiring UX/UI designer with a strong interest in solving practical problems through thoughtful design. I enjoy understanding how people interact with digital products, simplifying complex experiences, and translating ideas into clean, responsive interfaces.</p>
+          <p class="mt-3">Alongside design, I have developed practical front-end skills in HTML, CSS, Tailwind CSS, and JavaScript. This allows me to understand not only how an interface should look and behave, but also how it can be implemented on the web.</p>
+          <p class="mt-3">I'm currently looking for an opportunity where I can learn from experienced teams, contribute to meaningful products, and grow as a designer who understands both user experience and technology.</p>
+        </div>
+        <aside class="bg-white p-6 rounded-lg border">
+          <h3 class="font-medium">What I care about</h3>
+          <ul class="mt-3 list-disc list-inside text-sm text-gray-700">
+            <li>Solving real user problems</li>
+            <li>Simple and intuitive experiences</li>
+            <li>Clear visual hierarchy</li>
+            <li>Accessible design</li>
+            <li>Responsive interfaces</li>
+            <li>Continuous learning</li>
+            <li>Connecting design and technology</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section id="work" class="container mx-auto px-6 py-12">
+      <h2 class="text-2xl font-semibold">Selected Work</h2>
+      <p class="mt-2 text-gray-600">A project focused on real problems, thoughtful design, and practical solutions.</p>
+      <div class="mt-8 grid grid-cols-1 gap-6">
+        <!-- Project 1 -->
+        <article class="group bg-white rounded-lg border overflow-hidden">
+          <a href="work/spendwise.html" class="block">
+            <img src="assets/images/spendwise.svg" alt="SpendWise project preview" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300" />
+          </a>
+          <div class="p-5">
+            <p class="text-sm text-gray-500">Concept / Self-Initiated Project</p>
+            <h3 class="mt-2 font-medium">SpendWise</h3>
+            <p class="mt-2 text-sm text-gray-700">Student Financial Management Platform — helping students track, understand, and control everyday spending.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-sm text-gray-600">UX/UI Designer + Front-End Developer</div>
+              <a href="work/spendwise.html" class="text-sm text-accent">View Case Study →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container mx-auto px-6 py-10">
+      <h2 class="text-2xl font-semibold">Skills</h2>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg border">
+          <h3 class="font-medium">UX/UI Design</h3>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
+            <li>User-Centered Design</li>
+            <li>Design Thinking</li>
+            <li>User Research</li>
+            <li>Wireframing & Prototyping</li>
+            <li>Interaction & Visual Design</li>
+            <li>Accessibility & Usability Testing</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg border">
+          <h3 class="font-medium">Tools</h3>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
+            <li>Figma • FigJam</li>
+            <li>Canva • Adobe Express</li>
+            <li>Git & GitHub</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg border">
+          <h3 class="font-medium">Front-End</h3>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
+            <li>HTML5 • CSS3 • Tailwind CSS</li>
+            <li>JavaScript (ES6+)</li>
+            <li>Responsive Web Development • API Integration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Designing is only half the story -->
+    <section class="container mx-auto px-6 py-10">
+      <h2 class="text-xl font-semibold">Designing is only half the story.</h2>
+      <p class="mt-3 text-gray-700">I enjoy understanding the relationship between design and implementation. My front-end skills help me think about responsiveness, interaction, constraints, and feasibility while designing.</p>
+      <div class="mt-6 flex gap-4 items-center text-sm text-gray-700">
+        <div class="font-medium">Figma Design</div>
+        <div>→</div>
+        <div class="font-medium">HTML/CSS/Tailwind</div>
+        <div>→</div>
+        <div class="font-medium">JavaScript</div>
+        <div>→</div>
+        <div class="font-medium">Interactive Application</div>
+      </div>
+    </section>
+
+    <!-- Beyond the screen -->
+    <section class="container mx-auto px-6 py-10">
+      <h3 class="text-lg font-semibold">Beyond the screen</h3>
+      <p class="mt-3 text-gray-700">Learning new technologies, exploring design, building small web experiments, and improving communication. I use AI-assisted workflows to speed ideation and focus on meaningful problems.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container mx-auto px-6 py-12 bg-white rounded-lg border">
+      <h2 class="text-2xl font-semibold">Have a problem worth solving?</h2>
+      <p class="mt-2 text-gray-700">I'm currently looking for an opportunity to start my career in UX/UI design and grow at the intersection of design and front-end development.</p>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <p class="font-medium">Let's Connect</p>
+          <ul class="mt-3 text-sm text-gray-700">
+            <li>Email: <a href="mailto:pavithramcpavithramc@email.com" class="text-accent">pavithramcpavithramc@email.com</a></li>
+            <li>Phone: 09740415573</li>
+            <li>Location: Tumakuru, Karnataka, India</li>
+          </ul>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-sm text-gray-700">If you'd like to share a brief note, mention the role or project and I'll reply as soon as possible.</p>
+          <form class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3" action="mailto:pavithramcpavithramc@email.com" method="post" aria-label="Contact form">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" class="p-3 border rounded" placeholder="Your name" required />
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" class="p-3 border rounded" placeholder="Your email" required />
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="4" class="p-3 border rounded md:col-span-2" placeholder="Short message" required></textarea>
+            <button type="submit" class="btn-primary md:col-span-2">Let's Connect</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-6 text-sm text-gray-600">LinkedIn • GitHub • Resume (placeholders)</div>
+    </section>
+  </main>
+
+  <footer class="mt-12 py-8 bg-white border-t">
+    <div class="container mx-auto px-6 text-sm text-gray-700 flex flex-col md:flex-row items-center justify-between">
+      <div>
+        <div class="font-medium">Pavithra C</div>
+        <div>UX/UI Designer with Front-End Development Skills</div>
+      </div>
+      <nav class="mt-4 md:mt-0">
+        <a href="#work" class="mr-4">Work</a>
+        <a href="#about" class="mr-4">About</a>
+        <a href="#skills" class="mr-4">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="mt-4 md:mt-0">© 2026 Pavithra C</div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
